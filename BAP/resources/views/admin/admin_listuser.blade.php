@@ -16,61 +16,42 @@
               </tr>
               </thead>
               <tbody>
+              @if($user->count()>0)
+                @foreach($user as $key=>$u)
                 <tr>
-                  <th>1</th>
-                  <th>Nguyen Phuong</th>
-                  <th>phuong@gmail.con</th>
+                  <th>{{$key}}</th>
+                  <th>{{$u->full_name}}</th>
+                  <th>{{$u->email}}</th>
                   <th>
                     <div class="row ml-1">
-                        <form action="" method="POST">
-                            <input hidden value="delete" name="_method">
+                        <form action="{{route('delete')}}" method="POST">
+                        @csrf
+                            <input hidden value="{{$u->id}}" name="id">
+                            <input hidden value="Users" name="type">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
                   </th>
                 </tr>
-                <tr>
-                  <th>2</th>
-                  <th>Binh An</th>
-                  <th>an@gmail.com</th>
-                  <th>
-                    <div class="row ml-1">
-                        <form action="" method="POST">
-                            <input hidden value="delete" name="_method">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <th>Nguyen Van A</th>
-                  <th>a@gmail.com</th>
-                  <th>
-                    <div class="row ml-1">
-                        <form action="" method="POST">
-                            <input hidden value="delete" name="_method">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                  </th>
-               </tr>
-               <tr>
-                <th>4</th>
-                <th>Lan</th>
-                <th>Lan@gmail.com</th>
-                <th>
-                  <div class="row ml-1">
-                      <form action="" method="POST">
-                          <input hidden value="delete" name="_method">
-                          <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
-                  </div>
-                </th>
-              </tr>
+                @endforeach
+                @endif
               </tbody>
           </table>
-
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-4">
+            <ul class="pagination">
+              <li class="page-item {{ ($user->currentPage() == 1) ? ' disabled' : '' }}">
+                  <a class="page-link" href="{{ $user->url(1) }}">Previous</a>
+              </li>
+                @for($i = 1; $i <= $user->lastPage(); $i++)
+                    <li class="page-item {{ ($user->currentPage() == $i) ? ' active' : '' }}">
+                        <a class="page-link" href="{{ $user->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+              <li class="page-item {{ ($user->currentPage() == $user->lastPage()) ? ' disabled' : '' }}">
+                  <a class="page-link" href="{{ $user->url($user->currentPage()+1) }}">Next</a>
+              </li>
+            </ul>
+          </nav>
     </div>
     
 </div>
