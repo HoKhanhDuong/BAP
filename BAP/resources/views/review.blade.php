@@ -3,60 +3,52 @@
 <div class="container">
     <div class="row">
         <div class="col-5 mt-4 d-flex justify-content-center" >
-            <img src="img/anh1.jpg" alt="anh1" style="width: 95%; height: 95%"/>
+            <img src="{{asset('upload/'.$book->image)}}" alt="anh1" style="width: 95%; height: 95%"/>
         </div>
         <div class="col-7 mt-4">
             <br/>
             <br/>
-            <h3 class="card-title">Em se den cung con mua</h3>
-            <p class="card-text"><span class="font-weight-bold">Tac gia:</span> Ichikawa Takuji</p>
+            <h3 class="card-title">{{$book->name}}</h3>
+            <p class="card-text"><span class="font-weight-bold">Tac gia:</span> {{$book->tac_gia}}</p>
             <h5 class="card-title">Noi dung:</h5>
-            <p class="card-text">“Hôm nay là lần đầu tiên chúng mình gặp nhau với đôi giầy có cổ và có gót. Cũng phải nói thêm, hôm nay cũng là lần đầu tiên anh thấy em mặc chiếc váy liền màu đỏ sẫm. Lần đầu tiên anh thấy em tô son. Lần đầu tiên anh thấy mái tóc em đung đưa mỗi lần em nghiêng đầu, lần đầu tiên anh cảm thấy bồn chồn không yên khi nói chuyện với em.
-                Tất cả đều là lần đầu tiên, đến nỗi mà khó tìm được một thứ không phải lần đầu tiên.’’</p> 
-        
-        </div>  
-    </div>  
+            <p class="card-text">{{$book->content}}</p>
+
+        </div>
+    </div>
     <div class="response mt-4">
         <h4>Comments</h4>
-        <form>
+        <form action="{{url('user/comment/'.$book->id)}}" method="POST">
+            @csrf
             <div class="form-row">
-        
+
                 <div class="col-11">
-                    <input type="text" class="form-control" placeholder="Comment">
+                    <input type="text" name="content" class="form-control" placeholder="Comment" required>
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary mb-2">Submit</button>
                 </div>
-            
+
             </div>
         </form>
 
-        <div class="media response-info">
-            <div class="media-left response-text-left">
-                <a href="#">
-                    <img class="media-object" src="img/icon1.png" alt=""/>
-                </a>
-                <h5><a href="#">Admin</a></h5>
-            </div>
-            <div class="media-body response-text-right">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="clearfix"> </div>
+
+            @if($comment->count()>0)
+                @foreach($comment as $key=>$c)
+                <div class="media response-info">
+                    <div class="media-left response-text-left" style="display: flex">
+                        <a href="#">
+                            <img class="media-object avt" src="{{asset('upload/'.$c->avatar)}}" alt=""/>
+                        </a>
+                        <h5><a href="#">{{$c->full_name}}</a></h5>
+                    </div>
+                    <div class="media-body response-text-right">
+                        <p>{{$c->content}}</p>
+                    </div>
+                </div>
+                @endforeach
+            @endif
         </div>
-        <div class="media response-info">
-            <div class="media-left response-text-left">
-                <a href="#">
-                    <img class="media-object" src="img/icon1.png" alt=""/>
-                </a>
-                <h5><a href="#">Admin</a></h5>
-            </div>
-            <div class="media-body response-text-right">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>		
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>	
+
+
 </div>
 @endsection
