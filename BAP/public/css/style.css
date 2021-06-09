@@ -11,7 +11,7 @@
 }
 
 .media.response-info {
-    margin-top: 3em;
+    margin-top: 1em;
   }
   .response-info-mdl {
     margin: 1em 0px 1em 4em;
@@ -44,7 +44,7 @@
   }
   .response-text-right p {
     color: #727272;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 0 1em;
   }
   .response-text-right ul{
@@ -54,12 +54,12 @@
   .response-text-right ul li{
     display: inline-block;
     color: #727272;
-    font-size: 13px;
+    font-size: 16px;
     margin-right: 1em;
   }
   .response-text-right ul li a{
       color: #5F9EA0;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
   }
   .response-text-right ul li a:hover{
@@ -118,7 +118,7 @@
   }
   .avt{
       width: 60px;
-      height: 70px;
+      height: 60px;
       clip-path: circle(30px at 50% 50%);
   }
 .avatar{
