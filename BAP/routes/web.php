@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('review');
+    return view('admin.admin_listbooks');
     
 });
