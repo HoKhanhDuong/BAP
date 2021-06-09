@@ -27,7 +27,7 @@
                       <div class="row ml-1">
                           <form action="{{route('delete')}}" method="POST">
                               <input hidden value="{{$key}}" name="id">
-                              <input hidden value="books" name="type">
+                              <input hidden value="Books" name="type">
                               <button type="submit" class="btn btn-danger">Delete</button>
                           </form>
                       </div>

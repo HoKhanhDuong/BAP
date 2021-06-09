@@ -11,25 +11,25 @@ class AdminController extends Controller
 {
     //
     public function ListBook(){
-        $book = DB::table('books')->paginate(10);
+        $book = DB::table('Books')->paginate(10);
         $data = [];
         $data['book'] = $book;
         return view('admin/admin_listbooks',$data);
     }
 
     public function ListUser(){
-        $user = DB::table('users')->paginate(10);
+        $user = DB::table('Users')->paginate(10);
         $data = [];
         $data['user'] = $user;
         return view('admin/admin_listuser',$data);
     }
 
     public function Delete(Request $request) {
+        dd($request);
         $delete = DB::table($request->type)
                     ->where('id',$request->id)
                     ->delete();
         
         dd($delete);
-
     }
 }

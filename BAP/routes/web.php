@@ -36,7 +36,7 @@ Route::group(['prefix'=>'user'], function () {
 });
 Route::group(['prefix'=>'admin'], function () {
     Route::get('/listbook', [AdminController::class, 'ListBook'])->name('adListBook');
-    Route::post('/listuser',[AdminController::class, 'ListUser'])->name('adListUser');
-    Route::post('delete', [AdminController::class, 'Delete'])->name('delete');
+    Route::get('/listuser',[AdminController::class, 'ListUser'])->name('adListUser');
+    Route::post('/delete', [AdminController::class, 'Delete'])->name('delete');
 });
 
