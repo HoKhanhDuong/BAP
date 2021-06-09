@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-5 mt-4 d-flex justify-content-center" >
-            <img src="img/anh1.jpg" alt="anh1" style="width: 400px; height: 400px"/>
+            <img src="img/anh1.jpg" alt="anh1" style="width: 95%; height: 95%"/>
         </div>
         <div class="col-7 mt-4">
             <br/>

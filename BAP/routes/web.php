@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('review');
-    
+    return view('register');
+
 });
+//Route::post('/register', 'AuthController@AuthController')->name('Register');
+Route::post('/register', [AuthController::class, 'Register'])->name('Register');
+Route::get('/register', [AuthController::class, 'getRegister'])->name('getRegister');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
+Route::get('/home', [BookController::class, 'ListBook'])->name('ListBook');

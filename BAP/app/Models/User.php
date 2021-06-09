@@ -9,15 +9,16 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-
+    use Notifiable;
+    protected $table = 'Users';
+    protected $primaryKey  = 'id';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
         'password',
     ];
@@ -31,7 +32,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public $timestamps = false;
     /**
      * The attributes that should be cast to native types.
      *
