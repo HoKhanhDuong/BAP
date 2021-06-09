@@ -13,12 +13,12 @@ class CreateComments extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('Comments', function (Blueprint $table) {
             $table->id();
             $table->string('content');
             $table->timestamps();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreignId('book_id')->references('id')->on('Books')->onDelete('cascade');
         });
     }
 

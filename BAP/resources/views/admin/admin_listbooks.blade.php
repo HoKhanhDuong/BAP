@@ -17,60 +17,41 @@
               
               </thead>
               <tbody>
-                <tr>
-                  <th>1</th>
-                  <th>Cho toi xin 1 ve di tuoi tho</th>
-                  <th>Nguyen Nhat anh</th>
-                  <th>
-                    <div class="row ml-1">
-                        <form action="" method="POST">
-                            <input hidden value="delete" name="_method">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>2</th>
-                  <th>Co hai con meo ngoi ben cua so</th>
-                  <th>Nguyen Nhat Anh</th>
-                  <th>
-                    <div class="row ml-1">
-                        <form action="" method="POST">
-                            <input hidden value="delete" name="_method">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <th>Co gai den tu hom qua</th>
-                  <th>Nguyen Nhat Anh</th>
-                  <th>
-                    <div class="row ml-1">
-                        <form action="" method="POST">
-                            <input hidden value="delete" name="_method">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                  </th>
-               </tr>
-               <tr>
-                <th>4</th>
-                <th>Bay buoc den mua he</th>
-                <th>Nguyen Nhat Anh</th>
-                <th>
-                  <div class="row ml-1">
-                      <form action="" method="POST">
-                          <input hidden value="delete" name="_method">
-                          <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
-                  </div>
-                </th>
-              </tr>
+              @if($book->count()>0)
+                @foreach($book as $key=>$b)
+                  <tr>
+                    <th>{{$key}}</th>
+                    <th>{{$b->name}}</th>
+                    <th>{{$b->tac_gia}}</th>
+                    <th>
+                      <div class="row ml-1">
+                          <form action="{{route('delete')}}" method="POST">
+                              <input hidden value="{{$key}}" name="id">
+                              <input hidden value="books" name="type">
+                              <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                      </div>
+                    </th>
+                  </tr>
+                @endforeach
+              @endif
               </tbody>
           </table>
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-4">
+            <ul class="pagination">
+              <li class="page-item {{ ($book->currentPage() == 1) ? ' disabled' : '' }}">
+                  <a class="page-link" href="{{ $book->url(1) }}">Previous</a>
+              </li>
+                @for($i = 1; $i <= $book->lastPage(); $i++)
+                    <li class="page-item {{ ($book->currentPage() == $i) ? ' active' : '' }}">
+                        <a class="page-link" href="{{ $book->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+              <li class="page-item {{ ($book->currentPage() == $book->lastPage()) ? ' disabled' : '' }}">
+                  <a class="page-link" href="{{ $book->url($book->currentPage()+1) }}">Next</a>
+              </li>
+            </ul>
+          </nav>
 
     </div>
     

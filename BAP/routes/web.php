@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
@@ -25,3 +26,6 @@ Route::get('/register', [AuthController::class, 'getRegister'])->name('getRegist
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
 Route::get('/home', [BookController::class, 'ListBook'])->name('ListBook');
+Route::post('/admin/listbooks',[AdminController::class, 'ListBook'])->name('adListBook');
+Route::post('/admin/listuser',[AdminController::class, 'ListUser'])->name('adListUser');
+Route::post('/admin/delete', [AdminController::class, 'Delete'])->name('delete');

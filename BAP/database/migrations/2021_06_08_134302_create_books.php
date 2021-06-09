@@ -13,7 +13,7 @@ class CreateBooks extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('Books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('image');
@@ -21,7 +21,7 @@ class CreateBooks extends Migration
             $table->string('tac_gia');
             $table->float('rate');
             $table->timestamps();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('Users')->onDelete('cascade');
         });
     }
 

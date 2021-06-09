@@ -11,10 +11,10 @@
       <div class="collapse navbar-collapse" id="navbarNav11">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" >List user<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{route('adListUser')}}" >List user<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">List book</a>
+            <a class="nav-link" href="{{route('adListBook')}}" >List book</a>
           </li>
           <li class="nav-item">
             <a class="nav-link">Log out</a>
