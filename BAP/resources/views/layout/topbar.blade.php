@@ -13,12 +13,18 @@
           <li class="nav-item active">
             <a class="nav-link" href="{{route('user.home')}}" >Home<span class="sr-only">(current)</span></a>
           </li>
+          @if(empty(Session::get('users')))
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('login')}}">Login</a>
+          </li>
+          @else
           <li class="nav-item">
             <a class="nav-link" href="{{route('user.profile')}}">My account</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('logout')}}">Log out</a>
           </li>
+          @endif
         </ul>
       </div>
     </div>

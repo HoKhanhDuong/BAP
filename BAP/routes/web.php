@@ -16,18 +16,14 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('register');
-
-});
 //Route::post('/register', 'AuthController@AuthController')->name('Register');
+Route::get('/', [BookController::class, 'ListBook'])->name('user.home');
 Route::post('/register', [AuthController::class, 'Register'])->name('Register');
 Route::get('/register', [AuthController::class, 'getRegister'])->name('getRegister');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['prefix'=>'user'], function () {
-    Route::get('/home', [BookController::class, 'ListBook'])->name('user.home');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('user.profile');
     Route::get('/addbook', [BookController::class, 'getAddBook'])->name('user.getaddbook');
     Route::post('/addbook', [BookController::class, 'postAddBook'])->name('user.postaddbook');
@@ -35,8 +31,8 @@ Route::group(['prefix'=>'user'], function () {
     Route::post('/comment/{id}', [BookController::class, 'Comment'])->name('user.comment');
 });
 Route::group(['prefix'=>'admin'], function () {
-    Route::get('/listbook', [AdminController::class, 'ListBook'])->name('adListBook');
-    Route::get('/listuser',[AdminController::class, 'ListUser'])->name('adListUser');
-    Route::post('/delete', [AdminController::class, 'Delete'])->name('delete');
+    Route::get('/listbook', [AdminController::class, 'ListBook'])->name('adListBook')->middleware('admin');
+    Route::get('/listuser',[AdminController::class, 'ListUser'])->name('adListUser')->middleware('admin');
+    Route::post('/delete', [AdminController::class, 'Delete'])->name('delete')->middleware('admin');
 });
 

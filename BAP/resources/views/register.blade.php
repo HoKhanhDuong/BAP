@@ -59,7 +59,7 @@
                         </div>
                         <div class="mt-4">
                             <div class="col">
-                                <a href="" >Đăng nhập</a>
+                                <a href="{{route('login')}}" >Đăng nhập</a>
                             </div>
                             <div class="col d-block">
                                 <button class="btn btn-outline-secondary" type="submit">Đăng ký</button>

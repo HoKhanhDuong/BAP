@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -66,11 +65,11 @@ class AuthController extends Controller
         if ( Hash::check($request->password, $user[0]->password) ) {
             Session::push('users', $user);
             switch ($user[0]->type) {
-                case 0:
-                    # code...
-                    return redirect('user/home');
                 case 1:
-                    return redirect('user/home');
+                    # code...
+                    return redirect('admin/admin_listbooks');
+                case 0:
+                    return redirect('/');
             }
         } else {
             // Kiểm tra không đúng sẽ hiển thị thông báo lỗi
@@ -79,8 +78,8 @@ class AuthController extends Controller
         }
     }
     public function logout() {
-        if (Session::has('user')) {
-            Session::forget('user');
+        if (Session::has('users')) {
+            Session::forget('users');
             return redirect('/login');
         } else {
             return redirect('/login');
