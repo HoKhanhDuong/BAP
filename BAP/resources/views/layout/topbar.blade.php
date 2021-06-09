@@ -11,13 +11,13 @@
       <div class="collapse navbar-collapse" id="navbarNav11">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" >Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{route('user.home')}}" >Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">My account</a>
+            <a class="nav-link" href="{{route('user.profile')}}">My account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Log out</a>
+            <a class="nav-link" href="{{route('logout')}}">Log out</a>
           </li>
         </ul>
       </div>
