@@ -25,10 +25,12 @@ class BookController extends Controller
 
         $this->validate($request,
             [
-                'name' => 'unique:Books,name'
+                'name' => 'unique:Books,name',
+                'rate' => 'digits_between:0,10'
             ],
             [
-                'name.unique' => 'Name already exists'
+                'name.unique' => 'Name already exists',
+                'rate.digits_between' => 'Rate between 0 and 10'
             ]
         );
         $book = new Books;

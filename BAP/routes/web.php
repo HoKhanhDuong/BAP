@@ -17,7 +17,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', function () {
-    return view('register');
+    return view('login');
 
 });
 //Route::post('/register', 'AuthController@AuthController')->name('Register');

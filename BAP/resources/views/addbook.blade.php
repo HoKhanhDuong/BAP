@@ -17,6 +17,15 @@
 {{--                </div>--}}
 {{--            </div>--}}
             <div class="col-lg-8">
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-white">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{route('user.postaddbook')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                 <div class="card">
@@ -50,7 +59,7 @@
                                 <h6 class="mb-0">Rate</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" name="rate" class="form-control" required>
+                                <input type="number" name="rate" class="form-control" min="0" max="10" value="0" required>
                             </div>
                         </div>
                         <div class="row mb-3">
