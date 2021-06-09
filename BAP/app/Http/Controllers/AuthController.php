@@ -68,14 +68,22 @@ class AuthController extends Controller
             switch ($user[0]->type) {
                 case 0:
                     # code...
-                    return redirect('/home');
+                    return redirect('user/home');
                 case 1:
-                    return redirect('/home');
+                    return redirect('user/home');
             }
         } else {
             // Kiểm tra không đúng sẽ hiển thị thông báo lỗi
             Session::flash('error', 'Username or password is incorrect!');
             return redirect('login');
+        }
+    }
+    public function logout() {
+        if (Session::has('user')) {
+            Session::forget('user');
+            return redirect('/login');
+        } else {
+            return redirect('/login');
         }
     }
 }

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-end mb-4 mt-4">
-        <button type="button" class="btn btn-outline-success">Add book</button>
+        <a type="button" class="btn btn-outline-success" href="{{route('user.getaddbook')}}">Add book</a>
     </div>
     <div class="row">
         @if($book->count()>0)
@@ -15,7 +15,7 @@
                             <p class="card-text">{{$b->tac_gia}}</p>
                         </div>
                         <div class="d-flex justify-content-end mx-4 mb-4">
-                            <button type="button" class="btn btn-danger">Read more</button>
+                            <a type="button" class="btn btn-danger" href="{{url('user/reviewbook/'.$b->id)}}">Read more</a>
                         </div>
                     </div>
                 </div>
