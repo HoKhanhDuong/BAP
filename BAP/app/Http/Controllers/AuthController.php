@@ -79,8 +79,8 @@ class AuthController extends Controller
         }
     }
     public function logout() {
-        if (Session::has('user')) {
-            Session::forget('user');
+        if (Session::has('users')) {
+            Session::forget('users');
             return redirect('/login');
         } else {
             return redirect('/login');
