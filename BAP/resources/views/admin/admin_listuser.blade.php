@@ -25,6 +25,7 @@
                   <th>
                     <div class="row ml-1">
                         <form action="{{route('delete')}}" method="POST">
+                        @csrf
                             <input hidden value="{{$u->id}}" name="id">
                             <input hidden value="Users" name="type">
                             <button type="submit" class="btn btn-danger">Delete</button>
