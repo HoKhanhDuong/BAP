@@ -48,7 +48,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col">
-                                <a href="">Đăng ký tài khoản</a>
+                                <a href="{{route('getRegister')}}">Đăng ký tài khoản</a>
                             </div>
                         </div>
                         <div class="row mt-4">
