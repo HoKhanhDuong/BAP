@@ -15,7 +15,6 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //Route::post('/register', 'AuthController@AuthController')->name('Register');
 Route::get('/', [BookController::class, 'ListBook'])->name('user.home');
 Route::post('/register', [AuthController::class, 'Register'])->name('Register');
