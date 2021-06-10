@@ -34,17 +34,19 @@
 
             @if($comment->count()>0)
                 @foreach($comment as $key=>$c)
-                <div class="media response-info">
-                    <div class="media-left response-text-left" style="display: flex">
-                        <a href="#">
-                            <img class="media-object avt" src="{{asset('upload/'.$c->avatar)}}" alt=""/>
-                        </a>
-                        <h5><a href="#">{{$c->full_name}}</a></h5>
+
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img class="media-object avt" src="{{asset('upload/'.$c->avatar)}}" alt=""/>
+                            </a>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <h6><a href="#">{{$c->full_name}}</a></h6>
+                            <p>{{$c->content}}</p>
+                        </div>
                     </div>
-                    <div class="media-body response-text-right">
-                        <p>{{$c->content}}</p>
-                    </div>
-                </div>
+            
                 @endforeach
             @endif
         </div>
